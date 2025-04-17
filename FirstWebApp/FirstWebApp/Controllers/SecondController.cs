@@ -13,5 +13,14 @@ namespace FirstWebApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Feedback(string username, string text)
+        {
+            ViewData["FeedbackText"] = $"{username}:  {text}";
+            return View();
+        }
+
+
     }
 }

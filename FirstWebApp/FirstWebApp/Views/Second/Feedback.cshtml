@@ -1,5 +1,16 @@
 ﻿
 <h1>Напишите отзыв</h1>
 
-<input type="text" width="3000" />
-<input type="submit" value="Отправить"/>
+<form method="post">
+    
+    <input name="username" type="text" width="100" />
+    <br/>
+    <input name="text" type="text" width="1000" />
+
+    <input type="submit" value="Отправить"/>
+
+</form>
+
+
+
+<h2> @ViewData["FeedbackText"] </h2>
