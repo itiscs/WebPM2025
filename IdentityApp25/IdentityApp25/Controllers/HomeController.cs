@@ -17,12 +17,43 @@ namespace IdentityApp25.Controllers
 
         public IActionResult Index()
         {
+            if(Request.Query.Keys.Contains("mytheme"))
+            {
+                var t = Request.Query["mytheme"].ToString();
+                ViewData["theme"] = t;
+                Response.Cookies.Append("theme", t);
+            }
+
+            if (Request.Cookies.Keys.Contains("theme"))
+            {
+                ViewData["theme2"] = Request.Cookies["theme"]?.ToString();                
+            }
+
+            if (Request.Query.Keys.Contains("name"))
+            {
+                var n = Request.Query["name"].ToString();
+                ViewData["name"] = n;
+                HttpContext.Session.SetString("name", n);
+            }
+
+
+
+
+
+
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Privacy()
         {
+
+            if (HttpContext.Session.Keys.Contains("name"))
+            {
+                ViewData["name"] = HttpContext.Session.GetString("name");
+                
+            }
+
             return View();
         }
 
